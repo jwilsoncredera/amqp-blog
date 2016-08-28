@@ -1,0 +1,23 @@
+// Copy formatter and compiler settings
+task copyEclipseSettings << {
+    copy {
+        from rootProject.file('gradle/eclipse.settings/')
+        include '*.prefs'
+        into file('.settings')
+    }
+}
+eclipseJdt.dependsOn copyEclipseSettings
+
+eclipse {
+    classpath {
+        downloadSources=true
+        downloadJavadoc=true
+    }
+    wtp {
+        facet {
+          facet name: 'jst.web', version: '3.1'
+          facet name: 'java', version: '1.8'
+          facet name: 'wst.jsdt.web', version: '1.0'
+        }
+    }
+}

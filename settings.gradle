@@ -1,0 +1,5 @@
+rootProject.name = 'amqp-blog'
+
+include 'amqp-blog-common'
+include 'amqp-blog-sender'
+include 'amqp-blog-receiver'

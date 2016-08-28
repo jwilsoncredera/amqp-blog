@@ -1,0 +1,8 @@
+description = 'amqp-blog-sender'
+
+// Ensure each project uses a different remote debug port
+def remoteDebugPort = '5001'
+
+if (!project.hasProperty('prod')) {
+    bootRun.jvmArgs = ["-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=" + remoteDebugPort]
+}

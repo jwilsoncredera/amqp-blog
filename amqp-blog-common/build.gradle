@@ -1,0 +1,20 @@
+description = 'amqp-blog-common'
+
+jar {
+    baseName = 'amqp-blog-common'
+    version = '0.0.1-SNAPSHOT'
+}
+
+// Prevents common subproject dependencies from being included in the common jar itself.
+// Without this, each subproject that included common would include each shared dependency twice.
+bootRepackage {
+    enabled = false
+}
+
+configurations {
+    commonTestFiles
+}
+
+dependencies {
+    commonTestFiles sourceSets.test.output
+}
